@@ -1,0 +1,15 @@
+{% extends 'home.html' %}
+{% block list %}
+<button class="btn btn-danger"><a class="text-white" href="/Jugador_list" >Cancelar</a></button>
+{% endblock %}
+
+{% block I %}
+<form class="text-white " method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-primary" type="submit">Guardar</button>
+</form>
+{% endblock %}
+{% block link %}
+{% endblock %}
+

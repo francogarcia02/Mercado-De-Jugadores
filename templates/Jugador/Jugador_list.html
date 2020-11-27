@@ -1,0 +1,89 @@
+{% extends 'home.html' %}
+{% block I %}
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/">Inicio</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/Jugador_Create">Añadir jugador</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+{% endblock %}
+
+{% block list%}
+<table class="table text-white">
+    <thead>
+        <tr>
+            <td>Valor</td>
+            <td>Nombre</td>
+            <td>Club</td>
+            <td>Edad</td>
+            <td>Posicion</td>
+            <td>Rit</td>
+            <td>Tir</td>
+            <td>Reg</td>
+            <td>Pas</td>
+            <td>Def</td>
+            <td>Fis</td>
+            <td>Acciones</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% if object_list %}
+        {% for Jugador in object_list %}
+        <tr>
+            <td>{{ Jugador.valor }}</td>
+            <td>{{ Jugador.nombre }}</td>
+            <td>{{ Jugador.club }}</td>
+            <td>{{ Jugador.edad }}</td>
+            <td>{{ Jugador.posicion }}</td>
+            <td>{{ Jugador.mediaritmo }}</td>
+            <td>{{ Jugador.mediatiros }}</td>
+            <td>{{ Jugador.mediaregates }}</td>
+            <td>{{ Jugador.mediapases }}</td>
+            <td>{{ Jugador.mediadefenza }}</td>
+            <td>{{ Jugador.mediafisico }}</td>
+            <td>
+                <button class="btn btn-primary"><a class="text-white" href="{% url 'Editar' Jugador.id %}">Editar</a></button>
+                <button class="btn btn-danger"><a class="text-white" href="{% url 'Borrar' Jugador.id %}" >Eliminar</a></button>
+            </td>
+        </tr>
+        {% endfor %}
+
+        {% else %}
+        <h1 class="text-white">No hay jugadores registrados</h1>
+        {% endif %}
+    </tbody>
+    <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+</table>
+{% endblock %}
+
+
+

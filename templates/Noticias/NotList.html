@@ -1,0 +1,54 @@
+{% extends 'home.html' %}
+
+{% block I %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/">Inicio</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/Mercado">Mercado</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/aboutus">Informacion</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+{% endblock %}
+{% block link%}
+{% if object_list %}
+{% for Noticia in object_list %}
+<div style="margin-bottom: 10px; margin-top:10px; font-family: Times New Roman" class="container bg bg-danger text-white">
+  <div class="col align-items-start">
+    <div class="row">
+      <h5>{{ Noticia.epigrafe }}</h5>
+    </div>
+    <div class="row">
+      <h2 style=" ">{{ Noticia.titular }}</h2>
+    </div>
+    <div class="row">
+      <h5>{{ Noticia.subtitulo }}</h5>
+    </div>
+    <div class="row">
+      <p style="font-family: Georgia">{{ Noticia.cuerpo }}</p>
+    </div>
+  </div>
+</div>
+<button class="btn btn-primary"><a class="text-white" href="{% url 'EditarNot' Noticia.id %}">Editar</a></button>
+<button class="btn btn-danger"><a class="text-white" href="{% url 'BorrarNot' Noticia.id %}" >Eliminar</a></button>
+
+{% endfor %}
+
+{% else %}
+<h1 class="text-white">No hay noticias</h1>
+{% endif %}
+<button class="btn btn-success"><a class="text-white" href="{% url 'CrearNot' %}" >Crear</a></button>
+{% endblock %}

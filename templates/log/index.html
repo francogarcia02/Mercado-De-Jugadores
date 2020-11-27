@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% extends 'home.html' %}
+{% block I %}
+<form class="text-white" method="post">
+    {% csrf_token %}
+    <h3 class="text-white">Inicie sesion</h3>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <label>Nombre de usuario</label>
+                <input class="form-control" type="text" name="username">
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <label>Nombre</label>
+                <input class="form-control" type="password" name="password">
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <input class="btn btn-primary" type="submit" value="Ingresar">
+                <button class="btn btn-success"><a class="text-white" href="/UserCreate"> Crear cuenta </a></button>
+                <button class="btn btn-danger"><a class="text-white" href="/"> Cancelar </a></button>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+
+            </div>
+        </div>
+    </div>
+</form>
+
+{% endblock %}

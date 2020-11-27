@@ -1,0 +1,11 @@
+{% extends 'home.html' %}
+
+{% block I %}
+<form method="post">
+    {% csrf_token %}
+    <h3 class="text-white">¿Desea eliminar el jugador {{ object.nombre}}?</h3>
+    <button class="btn btn-danger" type="submit">Eliminar</button>
+    <button class="btn btn-primary"><a class="text-white" href="{% url 'Lista' %}" >Cancelar</a></button>
+</form>
+{% endblock %}
+

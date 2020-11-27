@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% extends 'home.html' %}
+{% block I %}
+<form class="text-white" method="post">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <label>Epigrafe</label>
+                <input class="form-control" type="text" name="epigrafe">
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <label>Titulo</label>
+                <input class="form-control" type="text" name="titular">
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <label>Subtitulo</label>
+                <input class="form-control" type="text" name="subtitulo">
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <label>Entrada</label>
+                <input class="form-control" type="text" name="entradilla">
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <label>Cuerpo</label>
+                <input class="form-control" type="text" name="cuerpo">
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <button class="btn btn-success" type="submit"> Guardar </button>
+                <button class="btn btn-danger"><a href="/Noticia_list" class="text-white">Cancelar</a></button>
+            </div>
+        </div>
+    </div>
+
+</form>
+
+{% endblock %}
