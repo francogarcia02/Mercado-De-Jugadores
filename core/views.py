@@ -105,6 +105,7 @@ class TransaCreate(CreateView):
     template_name = 'transf.html'
 
 
+
     def get(self, request, **kwargs):
         jugador_id = kwargs.get('jugador_id')
         if jugador_id:
@@ -114,9 +115,26 @@ class TransaCreate(CreateView):
             return render(request, 'transf.html')
     success_url = reverse_lazy('Mercado')
 
-class TransList(ListView):
+class TransList(ListView, ):
     model = Transaccion
     template_name = 'Transacciones/TransList.html'
+"""
+    queryset = Transaccion.objects.filter(customuser = CustomUser.username)
+
+    def get(self, request, **kwargs):
+        jugador_id = kwargs.get('jugador_id')
+        custom = kwargs.get('username')
+        customuserr = {'customuser': CustomUser}
+
+        return render(request, 'TransList.html', {'customuser': CustomUser})
+
+        success_url = reverse_lazy('TranL')
+"""
+
+class VenderJug(DeleteView):
+    model = Transaccion
+    template_name = 'Transacciones/Vender.html'
+    success_url = reverse_lazy('MIS')
 
 
 

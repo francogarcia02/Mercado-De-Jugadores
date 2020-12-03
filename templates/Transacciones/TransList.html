@@ -22,13 +22,12 @@
 {% endblock %}
 
 {% block list%}
-<table class="table text-white">
+<table class="table text-white" >
     <thead>
         <tr>
-            <td>Fecha</td>
-            <td>Jugador</td>
+            <td>Fecha de compra</td>
+            <td>Adquisicion</td>
             <td>Comprador</td>
-            <td>Precio</td>
         </tr>
     </thead>
     <tbody>
@@ -38,8 +37,7 @@
             <td>{{ Transaccion.created_on }}</td>
             <td>{{ Transaccion.jugador }}</td>
             <td>{{ Transaccion.customuser }}</td>
-            <td>{{ Jugador.valor }}</td>
-            <td></td>
+
         </tr>
         {% endfor %}
 

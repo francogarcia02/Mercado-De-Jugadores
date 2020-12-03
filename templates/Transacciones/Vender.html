@@ -1,0 +1,10 @@
+{% extends 'home.html' %}
+
+{% block I %}
+<form method="post">
+    {% csrf_token %}
+    <h3 class="text-white">¿Desea vender el jugador {{ Transaccion.jugador }}?</h3>
+    <button class="btn btn-danger" type="submit">Vender</button>
+    <button class="btn btn-primary"><a class="text-white" href="{% url 'MIS' %}" >Cancelar</a></button>
+</form>
+{% endblock %}

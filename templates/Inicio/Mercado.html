@@ -28,7 +28,6 @@
         <tr>
             <td>Valor</td>
             <td>Nombre</td>
-            <td>Acciones</td>
         </tr>
     </thead>
     <tbody>
@@ -37,17 +36,16 @@
         <tr>
             <td>{{ jugador.valor }}</td>
             <td>{{ jugador.nombre }}</td>
-            <td>
-                <button class="btn btn-success"><a class="text-white" href="{% url 'Tran' jugador.id %}">Comprar</a></button>
-            </td>
         </tr>
-        {% endfor %}
 
+        {% endfor %}
+        <button class="btn btn-success"><a class="text-white" href="{% url 'Tran' %}">Comprar un jugador</a></button>
         {% else %}
         <h1>Los jugadores estan de vacaciones</h1>
         {% endif %}
     </tbody>
 </table>
+
 {% endblock %}
 
 {% block link %}
