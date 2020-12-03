@@ -72,8 +72,9 @@ def logout(request):
     return redirect('/')
 
 class Propios(ListView):
-    model = Jugador
+    model = Transaccion
     template_name = 'Jugador/Propios.html'
+
 
 class NoticiaList(ListView):
     model = Noticia
@@ -102,6 +103,28 @@ class TransaCreate(CreateView):
     model = Transaccion
     form_class = TransaForm
     template_name = 'transf.html'
+
+
+    def get(self, request, **kwargs):
+        jugador_id = kwargs.get('jugador_id')
+        if jugador_id:
+            jugador = {'jugador': Jugador}
+            return render(request, 'template', {"jugador": jugador})
+        else:
+            return render(request, 'transf.html')
     success_url = reverse_lazy('Mercado')
 
+class TransList(ListView):
+    model = Transaccion
+    template_name = 'Transacciones/TransList.html'
 
+
+
+
+
+
+            #tengo que tomar el objeto y mandarlo a transf, usando request o kwargs
+
+#context = {}
+#context['jugador'] = self.request."acceder al juidador que viene del request"
+#return render(request, self.template_name, context)

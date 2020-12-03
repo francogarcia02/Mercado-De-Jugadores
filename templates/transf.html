@@ -1,21 +1,13 @@
 <!DOCTYPE html>
 {% extends 'home.html' %}
 {% block I %}
+<p class="text-white ">¿Esta seguro?</p>
 <form class="text-white" method="post">
+
     {% csrf_token %}
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="form-group">
-                <p>¿Desea comprar a {{ Jugador.nombre }}?</p>
-            </div>
-        </div>
-        <div class="col-md-8 col-md-offset-2">
-            <div class="form-group">
-                <button class="btn btn-success" type="submit"> Guardar </button>
-                <button class="btn btn-danger"><a href="/Mercado" class="text-white">Cancelar</a></button>
-            </div>
-        </div>
-    </div>
+    {{ form.as_p }}
+    <button class="btn btn-success" type="submit"> continuar </button>
+    <button class="btn btn-danger"><a href="/Mercado" class="text-white">Cancelar</a></button>
 
 </form>
 

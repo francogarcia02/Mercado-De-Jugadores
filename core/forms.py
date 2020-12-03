@@ -57,7 +57,7 @@ class JugadorForm(ModelForm):
 
 class UsuarioForm(UserCreationForm):
     class Meta:
-        model = User
+        model = CustomUser
 
         fields = [
 
@@ -65,6 +65,7 @@ class UsuarioForm(UserCreationForm):
             'first_name',
             'last_name',
             'email',
+            'direccion'
 
 
         ]
@@ -74,6 +75,7 @@ class UsuarioForm(UserCreationForm):
             'first_name': 'Nombre',
             'last_name': 'Apellido',
             'email': 'Correo eletronico',
+            'direccion': 'Direccion'
 
         }
 
@@ -131,17 +133,18 @@ class TransaForm(ModelForm):
         model = Transaccion
 
         fields = [
-            'id',
-            'nombre',
-            'valor',
+            'jugador',
+            'customuser',
+
+
 
         ]
 
         labels = {
-            'id': 'ID',
-            'nombre': 'Jugador',
-            'valor': 'Precio'
-        }        
+            'jugador': 'Jugador',
+            'customuser': 'Su nombre',
+
+        }
 
 
 

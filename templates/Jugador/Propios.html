@@ -8,8 +8,12 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
+
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/TransList">Transacciones</a>
+      </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -19,7 +23,34 @@
 </nav>
 {% endblock %}
 
+{% block list%}
+<table class="table text-white">
+    <thead>
+        <tr>
+            <td>Comprado en</td>
+            <td>Jugador</td>
 
-{% block link%}
-<h3 class="text-white" style="margin-bottom: 100px"> Aun no hay jugadores </h3>
+        </tr>
+    </thead>
+    <tbody>
+        {% if object_list %}
+        {% for Transaccion in object_list %}
+        <tr>
+            <td>{{ Transaccion.created_on }}</td>
+            <td>{{ Transaccion.jugador }}</td>
+
+        </tr>
+        {% endfor %}
+
+        {% else %}
+        <h1 class="text-white">No hay jugadores adquiridos</h1>
+        {% endif %}
+    </tbody>
+    <tr>
+            <td></td>
+            <td></td>
+
+        </tr>
+
+</table>
 {% endblock %}

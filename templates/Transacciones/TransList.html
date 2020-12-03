@@ -1,7 +1,6 @@
 {% extends 'home.html' %}
 
 {% block I %}
-
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="/">Inicio</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -11,7 +10,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="/aboutus">Informacion</a>
+        <a class="nav-link" href="/Propios">perfil</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
@@ -26,32 +25,33 @@
 <table class="table text-white">
     <thead>
         <tr>
-            <td>Valor</td>
-            <td>Nombre</td>
-            <td>Acciones</td>
+            <td>Fecha</td>
+            <td>Jugador</td>
+            <td>Comprador</td>
+            <td>Precio</td>
         </tr>
     </thead>
     <tbody>
         {% if object_list %}
-        {% for jugador in object_list %}
+        {% for Transaccion in object_list %}
         <tr>
-            <td>{{ jugador.valor }}</td>
-            <td>{{ jugador.nombre }}</td>
-            <td>
-                <button class="btn btn-success"><a class="text-white" href="{% url 'Tran' jugador.id %}">Comprar</a></button>
-            </td>
+            <td>{{ Transaccion.created_on }}</td>
+            <td>{{ Transaccion.jugador }}</td>
+            <td>{{ Transaccion.customuser }}</td>
+            <td>{{ Jugador.valor }}</td>
+            <td></td>
         </tr>
         {% endfor %}
 
         {% else %}
-        <h1>Los jugadores estan de vacaciones</h1>
+        <h1 class="text-white">No hay transacciones registradas</h1>
         {% endif %}
     </tbody>
+    <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
 </table>
 {% endblock %}
-
-{% block link %}
-{% endblock %}
-
-
-

@@ -3,6 +3,7 @@ from django.db import transaction
 from django.contrib.auth.models import User
 
 
+
 """---------------------------------------------------------------------------------"""
 
 class Club(models.Model):
@@ -23,8 +24,8 @@ class Jugador(models.Model):
         ('Defenzor', 'Defenzor'),
         ('Arquero', 'Arquero'),
     ]
-    club = models.ForeignKey('Club','on_delete',max_length=50)
     id = models.IntegerField(primary_key=True)
+    club = models.ForeignKey('Club',on_delete=models.CASCADE)
     nombre = models.CharField(max_length=50)
     posicion = models.CharField(max_length=50,choices=posiciones,blank=True,)
     edad = models.IntegerField(default= 0)
@@ -53,7 +54,7 @@ class DT(models.Model):
 
     historia = models.CharField(max_length=60, default='NULL')
     nombre = models.CharField(max_length=50)
-    club = models.ForeignKey('CLub','on_delete',max_length=50)
+    club = models.ForeignKey('CLub',on_delete=models.CASCADE)
     valor= models.CharField(max_length=50,default="1")
     edad = models.CharField(max_length=50,default="1")
 
@@ -67,15 +68,9 @@ class DT(models.Model):
 
 """---------------------------------------------------------------------------------"""
 
-class Usuario(models.Model):
-    dinero = models.IntegerField(default=1000)
-
-    class Meta:
-        verbose_name = "usuario"
-        verbose_name_plural = "Usuarios"
 
 class Propios(models.Model):
-    jugador = models.ForeignKey('Jugador', 'on_delete', max_length=50,default=1)
+    jugador = models.ForeignKey('Jugador', on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = "Propio"
@@ -91,8 +86,18 @@ class Noticia(models.Model):
     cuerpo = models.CharField(max_length = 2000)
 
 
-class Transaccion(Jugador):
-    fecha = models.DateTimeField(auto_now_add=True)
+class Transaccion(models.Model):
+    customuser = models.ForeignKey('CustomUser',on_delete=models.CASCADE)
+    jugador = models.ForeignKey('Jugador','nombre')
+    created_on = models.DateTimeField(auto_now_add=True)
+
+
+
+class CustomUser(User):
+    direccion = models.CharField('Direccion',max_length=100, default=0)
+
+    def __str__(self):
+        return self.username
 
 
 
