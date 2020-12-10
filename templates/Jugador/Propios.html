@@ -28,7 +28,7 @@
 <table class="table text-white">
     <thead>
         <tr>
-            <td>Comprado en</td>
+            <td>Media</td>
             <td>Jugador</td>
             <td>acciones</td>
 
@@ -38,7 +38,7 @@
         {% if object_list %}
         {% for Transaccion in object_list %}
         <tr>
-            <td>{{ Transaccion.created_on }}</td>
+            <td>{{ Transaccion.media }}</td>
             <td>{{ Transaccion.jugador }}</td>
             <td>
                 <button class="btn btn-success"><a class="text-white" href="{% url 'Vender' Transaccion.id %}" >Vender</a></button>

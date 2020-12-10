@@ -28,28 +28,35 @@
             <td>Fecha de compra</td>
             <td>Adquisicion</td>
             <td>Comprador</td>
+            <td>Valor</td>
         </tr>
     </thead>
     <tbody>
+    <tr>
+        <td>{{objeto.created_on}}</td>
+        <td>{{objeto.jugador}}</td>
+        <td>{{objeto.customuser}}</td>
+        <td>{{objeto.precio}}</td>
+    </tr>
         {% if object_list %}
         {% for Transaccion in object_list %}
         <tr>
             <td>{{ Transaccion.created_on }}</td>
             <td>{{ Transaccion.jugador }}</td>
             <td>{{ Transaccion.customuser }}</td>
-
+            <td> {{ Transaccion.precio }} </td>
         </tr>
         {% endfor %}
 
         {% else %}
-        <h1 class="text-white">No hay transacciones registradas</h1>
         {% endif %}
     </tbody>
     <tr>
             <td></td>
             <td></td>
             <td></td>
-        </tr>
+            <td></td>
+    </tr>
 
 </table>
 {% endblock %}

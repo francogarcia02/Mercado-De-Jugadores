@@ -90,6 +90,14 @@ class Transaccion(models.Model):
     customuser = models.ForeignKey('CustomUser',on_delete=models.CASCADE)
     jugador = models.ForeignKey('Jugador','nombre')
     created_on = models.DateTimeField(auto_now_add=True)
+    precio = models.FloatField(default = 0)
+    media = models.IntegerField(default = 0)
+    def save(self, *args, **kwargs):
+        super(Transaccion, self).save(*args, **kwargs)
+        self.precio = self.jugador.valor
+        self.media = self.jugador.media
+        super(Transaccion, self).save(*args, **kwargs)
+
 
 
 

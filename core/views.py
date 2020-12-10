@@ -115,21 +115,17 @@ class TransaCreate(CreateView):
             return render(request, 'transf.html')
     success_url = reverse_lazy('Mercado')
 
-class TransList(ListView, ):
-    model = Transaccion
-    template_name = 'Transacciones/TransList.html'
-"""
-    queryset = Transaccion.objects.filter(customuser = CustomUser.username)
 
-    def get(self, request, **kwargs):
-        jugador_id = kwargs.get('jugador_id')
-        custom = kwargs.get('username')
-        customuserr = {'customuser': CustomUser}
+def TransList(request):
 
-        return render(request, 'TransList.html', {'customuser': CustomUser})
+    objeto = Transaccion.objects.latest("created_on")
+    return render(request, 'Transacciones/TransList.html', {'objeto': objeto})
 
-        success_url = reverse_lazy('TranL')
-"""
+
+#class ListaTr(ListView):
+#    model = Transaccion
+#    template_name = 'Transacciones/TransList.html'
+
 
 class VenderJug(DeleteView):
     model = Transaccion
@@ -141,8 +137,3 @@ class VenderJug(DeleteView):
 
 
 
-            #tengo que tomar el objeto y mandarlo a transf, usando request o kwargs
-
-#context = {}
-#context['jugador'] = self.request."acceder al juidador que viene del request"
-#return render(request, self.template_name, context)
